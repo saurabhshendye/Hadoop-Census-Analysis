@@ -32,11 +32,23 @@ public class rentedVsOwnedJob
             // Set the Mapper class
             job.setMapperClass(rentedVsOwnedMapper.class);
 
+            // Set the reducer class
+            job.setReducerClass(rentedVsOwnedReducer.class);
 
-        }catch (IOException e)
+            // Here we need to decide key value classes for mapper and reducer
+
+
+            // Path input in HDFS
+            FileInputFormat.addInputPath(job, new Path(args[0]));
+
+            // Path output in HDFS
+            FileOutputFormat.setOutputPath(job, new Path(args[1]));
+
+        }
+        catch (IOException e)
         {
             // For job.getInstance
-            e.printStackTrace();
+            System.err.println(e.getMessage());
         }
 
 
