@@ -6,7 +6,6 @@ package cs455.hadoop.Q1;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
-import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
@@ -36,6 +35,11 @@ public class rentedVsOwnedJob
             job.setReducerClass(rentedVsOwnedReducer.class);
 
             // Here we need to decide key value classes for mapper and reducer
+            job.setMapOutputKeyClass(Text.class);
+            job.setMapOutputValueClass(Text.class);
+
+            job.setOutputKeyClass(Text.class);
+            job.setOutputValueClass(Text.class);
 
 
             // Path input in HDFS
