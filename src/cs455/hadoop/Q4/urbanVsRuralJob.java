@@ -1,8 +1,7 @@
 /**
- * Created by Saurabh on 3/28/2017.
+ * Created by Saurabh on 3/30/2017.
  */
-
-package cs455.hadoop.Q1;
+package cs455.hadoop.Q4;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
@@ -13,7 +12,8 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
 import java.io.IOException;
 
-public class rentedVsOwnedJob
+
+public class urbanVsRuralJob
 {
     public static void main(String [] args)
     {
@@ -26,13 +26,13 @@ public class rentedVsOwnedJob
             Job job = Job.getInstance(conf, "Rented vs Owned");
 
             // Current Job
-            job.setJarByClass(rentedVsOwnedJob.class);
+            job.setJarByClass(urbanVsRuralJob.class);
 
             // Set the Mapper class
-            job.setMapperClass(rentedVsOwnedMapper.class);
+            job.setMapperClass(urbanVsRuralMapper.class);
 
             // Set the reducer class
-            job.setReducerClass(rentedVsOwnedReducer.class);
+            job.setReducerClass(urbanVsRuralReducer.class);
 
             // Here we need to decide key value classes for mapper and reducer
             job.setMapOutputKeyClass(Text.class);
@@ -55,7 +55,5 @@ public class rentedVsOwnedJob
         }
 
 
-
     }
-
 }
