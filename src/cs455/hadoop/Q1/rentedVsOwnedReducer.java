@@ -18,23 +18,26 @@ public class rentedVsOwnedReducer extends Reducer<Text, Text, Text, Text>
         double rentPercent = 0.0d;
         double ownedPercent = 0.0d;
 
+        long owned = 0;
+        long rented = 0;
+
         for (Text T: values)
         {
             String strValue = T.toString();
             String [] byParts = strValue.split(":");
 
-            long owned = Long.parseLong(byParts[0]);
-            long rented = Long.parseLong(byParts[1]);
-
-            rentPercent = rented/(owned + rented);
-            rentPercent = rentPercent * 100;
-
-            ownedPercent = owned/(owned + rented);
-            ownedPercent = ownedPercent * 100;
-
-            context.write(key, new Text("Owned: " + ownedPercent + "\n" + "Rented: " + rentPercent));
+            owned = owned + Long.parseLong(byParts[0]);
+            rented = rented + Long.parseLong(byParts[1]);
 
         }
+
+        rentPercent = rented/(owned + rented);
+        rentPercent = rentPercent * 100;
+
+        ownedPercent = owned/(owned + rented);
+        ownedPercent = ownedPercent * 100;
+
+        context.write(key, new Text("Owned: " + ownedPercent + "\n" + "Rented: " + rentPercent));
     }
 
 
