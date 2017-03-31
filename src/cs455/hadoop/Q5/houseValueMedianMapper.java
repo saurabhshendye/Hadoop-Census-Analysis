@@ -13,5 +13,10 @@ import java.io.IOException;
 public class houseValueMedianMapper extends Mapper
 {
 
+    public void map (LongWritable key, Text value, Context context)
+            throws IOException, InterruptedException
+    {
+
+    }
 
 }
