@@ -19,7 +19,8 @@ public class urbanVsRuralJob
     {
         try
         {
-            // Set all the configuration right. All configuration details are in conf directory
+            // Set all the configuration right.
+            // All configuration details are in conf directory
             Configuration conf = new Configuration();
 
             // Set the configuration and give job a name

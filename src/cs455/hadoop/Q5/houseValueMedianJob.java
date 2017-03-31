@@ -16,7 +16,8 @@ import java.io.IOException;
 public class houseValueMedianJob {
     public static void main(String[] args) {
         try {
-            // Set all the configuration right. All configuration details are in conf directory
+            // Set all the configuration right.
+            // All configuration details are in conf directory
             Configuration conf = new Configuration();
 
             // Set the configuration and give job a name
