@@ -65,7 +65,7 @@ public class houseValueMedianMapper extends Mapper<LongWritable, Text, Text, Tex
         bigString = bigString + line.substring(2973, 2981) + ":";
         bigString = bigString + line.substring(2982, 2990) + ":";
         bigString = bigString + line.substring(2991, 2999) + ":";
-        bigString = bigString + line.substring(3000, 3008 ) + ":";
+        bigString = bigString + line.substring(3000, 3008) + ":";
         bigString = bigString + line.substring(3009, 3017) + ":";
         bigString = bigString + line.substring(3018, 3026) + ":";
         bigString = bigString + line.substring(3027, 3035) + ":";
