@@ -33,7 +33,11 @@ public class houseValueMedianReducer extends Reducer<Text, Text, Text, Text>
 
         long total = totalForCurrentKey();
         long median = findMedian(total);
+        String index = findRange(median);
 
+        String range = valueMap.get(index);
+
+        context.write(key, new Text(range));
     }
 
 
@@ -78,10 +82,23 @@ public class houseValueMedianReducer extends Reducer<Text, Text, Text, Text>
         return median;
     }
 
-//    private static String findRange(long median)
-//    {
-//
-//    }
+    private static String findRange(long median)
+    {
+        long sum = 0;
+        for (int i = 0; i<summary.length; i++)
+        {
+            if (sum< median)
+            {
+                sum = sum + summary[i];
+            }
+            else
+            {
+                return Integer.toString(i);
+            }
+
+        }
+        return Integer.toString(summary.length -1);
+    }
 
     private static void setupHashmap()
     {
