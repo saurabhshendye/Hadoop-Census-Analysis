@@ -53,7 +53,5 @@ public class oldPeopleCountJob
             // For job.getInstance
             System.err.println(e.getMessage());
         }
-
-
     }
 }
