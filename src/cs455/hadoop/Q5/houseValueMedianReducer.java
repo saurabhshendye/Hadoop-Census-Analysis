@@ -9,7 +9,13 @@ import org.apache.hadoop.io.Text;
 
 import java.io.IOException;
 
-public class houseValueMedianReducer extends Reducer
+public class houseValueMedianReducer extends Reducer<Text, Text, Text, Text>
 {
+
+    public void reduce(Text key, Iterable<Text> value, Context context)
+        throws IOException, InterruptedException
+    {
+
+    }
 
 }
