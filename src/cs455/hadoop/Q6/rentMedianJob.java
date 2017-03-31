@@ -20,7 +20,7 @@ public class rentMedianJob {
             Configuration conf = new Configuration();
 
             // Set the configuration and give job a name
-            Job job = Job.getInstance(conf, "Rented vs Owned");
+            Job job = Job.getInstance(conf, "Rent median");
 
             // Current Job
             job.setJarByClass(rentMedianJob.class);

@@ -23,7 +23,7 @@ public class urbanVsRuralJob
             Configuration conf = new Configuration();
 
             // Set the configuration and give job a name
-            Job job = Job.getInstance(conf, "Rented vs Owned");
+            Job job = Job.getInstance(conf, "Urban Vs Rural");
 
             // Current Job
             job.setJarByClass(urbanVsRuralJob.class);
