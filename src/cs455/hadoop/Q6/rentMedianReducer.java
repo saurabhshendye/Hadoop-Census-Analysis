@@ -99,7 +99,6 @@ public class rentMedianReducer extends Reducer<Text, Text, Text, Text>
         }
     }
 
-
     private static void setupHashmap()
     {
         valueMap.put("0", "Less than $100");
@@ -120,5 +119,4 @@ public class rentMedianReducer extends Reducer<Text, Text, Text, Text>
         valueMap.put("15", "$1000 or more");
         valueMap.put("16", "No cash rent");
     }
-
 }
