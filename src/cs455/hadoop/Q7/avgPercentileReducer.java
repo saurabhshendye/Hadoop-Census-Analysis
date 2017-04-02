@@ -4,5 +4,10 @@
 
 package cs455.hadoop.Q7;
 
-public class avgPercentileReducer {
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Reducer;
+
+public class avgPercentileReducer extends Reducer <Text, Text, Text, Text>
+{
+
 }

@@ -4,5 +4,11 @@
 
 package cs455.hadoop.Q7;
 
-public class avgPercentileMapper {
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Mapper;
+
+public class avgPercentileMapper extends Mapper<LongWritable, Text, Text, Text>
+{
+
 }
