@@ -4,7 +4,10 @@
 
 package cs455.hadoop.Q3;
 
-public class ageDistributionReducer
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Reducer;
+
+public class ageDistributionReducer extends Reducer<Text, Text, Text, Text>
 {
 
 }

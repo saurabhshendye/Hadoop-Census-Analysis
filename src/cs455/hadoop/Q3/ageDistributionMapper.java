@@ -4,7 +4,11 @@
 
 package cs455.hadoop.Q3;
 
-public class ageDistributionMapper
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Mapper;
+
+public class ageDistributionMapper extends Mapper<LongWritable, Text, Text, Text>
 {
 
 }
