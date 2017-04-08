@@ -18,20 +18,20 @@ public class urbanVsRuralMapper extends Mapper<LongWritable, Text, Text, Text>
             throws IOException, InterruptedException
     {
         String line = value.toString();
-        int partNo = Integer.parseInt(line.substring(24, 27));
+        int partNo = Integer.parseInt(line.substring(24, 28));
         if (partNo == 2)
         {
-            int lineSummary = Integer.parseInt(line.substring(10, 12));
+            int lineSummary = Integer.parseInt(line.substring(10, 13));
             if(lineSummary == 100)
             {
-                String state = line.substring(8, 9);
+                String state = line.substring(8, 10);
 
-                String urbanInUrban = line.substring(1821, 1829);
-                String urbanInNonUrban = line.substring(1830, 1838);
+                String urbanInUrban = line.substring(1821, 1830);
+                String urbanInNonUrban = line.substring(1830, 1839);
                 long totalUrban = Long.parseLong(urbanInUrban) + Long.parseLong(urbanInNonUrban);
                 String urban = Long.toString(totalUrban);
 
-                String rural = line.substring(1839, 1847);
+                String rural = line.substring(1839, 1848);
 
                 context.write(new Text(state), new Text(urban + ":" +rural));
             }
