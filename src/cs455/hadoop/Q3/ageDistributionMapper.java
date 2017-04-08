@@ -17,13 +17,13 @@ public class ageDistributionMapper extends Mapper<LongWritable, Text, Text, Text
     {
         String line = value.toString();
 
-        int partNo = Integer.parseInt(line.substring(24, 27));
+        int partNo = Integer.parseInt(line.substring(24, 28));
         if (partNo == 1)
         {
-            int lineSummary = Integer.parseInt(line.substring(10, 12));
+            int lineSummary = Integer.parseInt(line.substring(10, 13));
             if(lineSummary == 100)
             {
-                String state = line.substring(8, 9);
+                String state = line.substring(8, 10);
 
                 String age18Male = upToAge18Male(line);
                 String age19To29Male = from19To29Male(line);
@@ -33,8 +33,8 @@ public class ageDistributionMapper extends Mapper<LongWritable, Text, Text, Text
                 String age19To29FeMale = from19To29FeMale(line);
                 String age30To39FeMale = from30To39FeMale(line);
 
-                String maleCount = line.substring(363, 371);
-                String femaleCount = line.substring(372, 380);
+                String maleCount = line.substring(363, 372);
+                String femaleCount = line.substring(372, 381);
 
                 context.write(new Text(state), new Text(age18Male + "/" + age19To29Male + "/" +
                                                 age30To39Male + "/" + age18FeMale + "/" + age19To29FeMale
@@ -46,8 +46,8 @@ public class ageDistributionMapper extends Mapper<LongWritable, Text, Text, Text
 
     private static String from30To39FeMale(String line)
     {
-        long total = Long.parseLong(line.substring(4305, 4313));
-        total += Long.parseLong(line.substring(4314, 4322));
+        long total = Long.parseLong(line.substring(4305, 4314));
+        total += Long.parseLong(line.substring(4314, 4323));
 
         return Long.toString(total);
     }
@@ -56,11 +56,11 @@ public class ageDistributionMapper extends Mapper<LongWritable, Text, Text, Text
     {
 //        String bigString = "";
 
-        long total = Long.parseLong(line.substring(4260, 4268));
-        total += Long.parseLong(line.substring(4269, 4277));
-        total += Long.parseLong(line.substring(4278, 4286));
-        total += Long.parseLong(line.substring(4287, 4295));
-        total += Long.parseLong(line.substring(4296, 4304));
+        long total = Long.parseLong(line.substring(4260, 4269));
+        total += Long.parseLong(line.substring(4269, 4278));
+        total += Long.parseLong(line.substring(4278, 4287));
+        total += Long.parseLong(line.substring(4287, 4296));
+        total += Long.parseLong(line.substring(4296, 4305));
 
         return Long.toString(total);
     }
@@ -69,19 +69,19 @@ public class ageDistributionMapper extends Mapper<LongWritable, Text, Text, Text
     {
 //        String bigString = "";
 
-        long total = Long.parseLong(line.substring(4143, 4151));
-        total += Long.parseLong(line.substring(4152, 4160));
-        total += Long.parseLong(line.substring(4161, 4169));
-        total += Long.parseLong(line.substring(4170, 4178));
-        total += Long.parseLong(line.substring(4179, 4187));
-        total += Long.parseLong(line.substring(4188, 4196));
-        total += Long.parseLong(line.substring(4197, 4205));
-        total += Long.parseLong(line.substring(4206, 4214));
-        total += Long.parseLong(line.substring(4215, 4223));
-        total += Long.parseLong(line.substring(4224, 4232));
-        total += Long.parseLong(line.substring(4233, 4241));
-        total += Long.parseLong(line.substring(4242, 4250));
-        total += Long.parseLong(line.substring(4251, 4259));
+        long total = Long.parseLong(line.substring(4143, 4152));
+        total += Long.parseLong(line.substring(4152, 4161));
+        total += Long.parseLong(line.substring(4161, 4170));
+        total += Long.parseLong(line.substring(4170, 4179));
+        total += Long.parseLong(line.substring(4179, 4188));
+        total += Long.parseLong(line.substring(4188, 4197));
+        total += Long.parseLong(line.substring(4197, 4206));
+        total += Long.parseLong(line.substring(4206, 4215));
+        total += Long.parseLong(line.substring(4215, 4224));
+        total += Long.parseLong(line.substring(4224, 4233));
+        total += Long.parseLong(line.substring(4233, 4242));
+        total += Long.parseLong(line.substring(4242, 4251));
+        total += Long.parseLong(line.substring(4251, 4260));
 
 
         return Long.toString(total);
@@ -92,8 +92,8 @@ public class ageDistributionMapper extends Mapper<LongWritable, Text, Text, Text
     {
 //        String bigString = "";
 
-        long total = Long.parseLong(line.substring(4026, 4034));
-        total += Long.parseLong(line.substring(4035, 4043));
+        long total = Long.parseLong(line.substring(4026, 4035));
+        total += Long.parseLong(line.substring(4035, 4044));
 
 
         return Long.toString(total);
@@ -103,11 +103,11 @@ public class ageDistributionMapper extends Mapper<LongWritable, Text, Text, Text
     {
 //        String bigString = "";
 
-        long total = Long.parseLong(line.substring(3981, 3989));
-        total += Long.parseLong(line.substring(3990, 3998));
-        total += Long.parseLong(line.substring(3999, 4007));
-        total += Long.parseLong(line.substring(4008, 4016));
-        total += Long.parseLong(line.substring(4017, 4025));
+        long total = Long.parseLong(line.substring(3981, 3990));
+        total += Long.parseLong(line.substring(3990, 3999));
+        total += Long.parseLong(line.substring(3999, 4008));
+        total += Long.parseLong(line.substring(4008, 4017));
+        total += Long.parseLong(line.substring(4017, 4026));
 
 
         return Long.toString(total);
@@ -117,19 +117,19 @@ public class ageDistributionMapper extends Mapper<LongWritable, Text, Text, Text
     {
 //        String bigString = "";
 
-        long total = Long.parseLong(line.substring(3864, 3872));
-        total += Long.parseLong(line.substring(3873, 3881));
-        total += Long.parseLong(line.substring(3882, 3890));
-        total += Long.parseLong(line.substring(3891, 3899));
-        total += Long.parseLong(line.substring(3900, 3908));
-        total += Long.parseLong(line.substring(3909, 3917));
-        total += Long.parseLong(line.substring(3918, 3926));
-        total += Long.parseLong(line.substring(3927, 3935));
-        total += Long.parseLong(line.substring(3936, 3944));
-        total += Long.parseLong(line.substring(3945, 3953));
-        total += Long.parseLong(line.substring(3954, 3962));
-        total += Long.parseLong(line.substring(3963, 3971));
-        total += Long.parseLong(line.substring(3972, 3980));
+        long total = Long.parseLong(line.substring(3864, 3873));
+        total += Long.parseLong(line.substring(3873, 3882));
+        total += Long.parseLong(line.substring(3882, 3891));
+        total += Long.parseLong(line.substring(3891, 3900));
+        total += Long.parseLong(line.substring(3900, 3909));
+        total += Long.parseLong(line.substring(3909, 3918));
+        total += Long.parseLong(line.substring(3918, 3927));
+        total += Long.parseLong(line.substring(3927, 3936));
+        total += Long.parseLong(line.substring(3936, 3945));
+        total += Long.parseLong(line.substring(3945, 3954));
+        total += Long.parseLong(line.substring(3954, 3963));
+        total += Long.parseLong(line.substring(3963, 3972));
+        total += Long.parseLong(line.substring(3972, 3981));
 
 
         return Long.toString(total);
