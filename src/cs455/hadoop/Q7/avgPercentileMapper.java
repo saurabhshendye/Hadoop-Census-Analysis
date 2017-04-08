@@ -17,14 +17,14 @@ public class avgPercentileMapper extends Mapper<LongWritable, Text, Text, Text>
         throws IOException, InterruptedException
     {
         String line = value.toString();
-        int partNo = Integer.parseInt(line.substring(24, 27));
+        int partNo = Integer.parseInt(line.substring(24, 28));
         if (partNo == 2)
         {
-            int lineSummary = Integer.parseInt(line.substring(10, 12));
+            int lineSummary = Integer.parseInt(line.substring(10, 13));
             if(lineSummary == 100)
             {
                 // Reading the state (output key)
-                String state = line.substring(8, 9);
+                String state = line.substring(8, 10);
 
                 // Reading the counts (output value)
                 String bigString = toString(line);
@@ -39,15 +39,15 @@ public class avgPercentileMapper extends Mapper<LongWritable, Text, Text, Text>
     {
         String bigString = "";
 
-        bigString = bigString + line.substring(2388, 2396) + ":";
-        bigString = bigString + line.substring(2397, 2405) + ":";
-        bigString = bigString + line.substring(2406, 2414) + ":";
-        bigString = bigString + line.substring(2415, 2423) + ":";
-        bigString = bigString + line.substring(2424, 2432) + ":";
-        bigString = bigString + line.substring(2433, 2441) + ":";
-        bigString = bigString + line.substring(2442, 2450) + ":";
-        bigString = bigString + line.substring(2451, 2459) + ":";
-        bigString = bigString + line.substring(2460, 2468);
+        bigString = bigString + line.substring(2388, 2397) + ":";
+        bigString = bigString + line.substring(2397, 2406) + ":";
+        bigString = bigString + line.substring(2406, 2415) + ":";
+        bigString = bigString + line.substring(2415, 2424) + ":";
+        bigString = bigString + line.substring(2424, 2433) + ":";
+        bigString = bigString + line.substring(2433, 2442) + ":";
+        bigString = bigString + line.substring(2442, 2451) + ":";
+        bigString = bigString + line.substring(2451, 2460) + ":";
+        bigString = bigString + line.substring(2460, 2469);
 
         return bigString;
     }
