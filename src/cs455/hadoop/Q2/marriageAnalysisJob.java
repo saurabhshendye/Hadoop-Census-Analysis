@@ -44,9 +44,24 @@ public class marriageAnalysisJob {
             // Path output in HDFS
             FileOutputFormat.setOutputPath(job, new Path(args[1]));
 
-        } catch (IOException e) {
+            //Block until the job is completed
+            System.exit(job.waitForCompletion(true) ? 0 : 1);
+
+        } catch (IOException e)
+        {
             // For job.getInstance
             System.err.println(e.getMessage());
         }
+        catch (InterruptedException e)
+        {
+            // job.waitForCompletion
+            System.err.println(e.getMessage());
+        }
+        catch (ClassNotFoundException e)
+        {
+            //job.waitForCompletion
+            System.err.println(e.getMessage());
+        }
+
     }
 }
