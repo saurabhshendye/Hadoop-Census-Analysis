@@ -17,15 +17,15 @@ public class rentedVsOwnedMapper extends Mapper<LongWritable, Text, Text, Text>
             throws IOException, InterruptedException
     {
             String line = value.toString();
-            int partNo = Integer.parseInt(line.substring(24, 27));
+            int partNo = Integer.parseInt(line.substring(24, 28));
             if (partNo == 2)
             {
-                int lineSummary = Integer.parseInt(line.substring(10, 12));
+                int lineSummary = Integer.parseInt(line.substring(10, 13));
                 if(lineSummary == 100)
                 {
-                    String state = line.substring(8, 9);
-                    String owned = line.substring(1803, 1811);
-                    String rented = line.substring(1812, 1820);
+                    String state = line.substring(8, 10);
+                    String owned = line.substring(1803, 1812);
+                    String rented = line.substring(1812, 1821);
                     context.write(new Text(state), new Text(owned + ":" + rented));
                 }
             }
