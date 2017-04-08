@@ -15,8 +15,8 @@ public class rentedVsOwnedReducer extends Reducer<Text, Text, Text, Text>
     public void reduce(Text key, Iterable<Text> values, Context context)
         throws IOException, InterruptedException
     {
-        double rentPercent = 0.0d;
-        double ownedPercent = 0.0d;
+        double rentPercent;
+        double ownedPercent;
 
         long owned = 0;
         long rented = 0;
@@ -31,11 +31,9 @@ public class rentedVsOwnedReducer extends Reducer<Text, Text, Text, Text>
 
         }
 
-        rentPercent = rented/(owned + rented);
-        rentPercent = rentPercent * 100;
+        rentPercent = rented * 100d/(owned + rented);
 
-        ownedPercent = owned/(owned + rented);
-        ownedPercent = ownedPercent * 100;
+        ownedPercent = owned * 100d/(owned + rented);
 
         context.write(key, new Text("Owned: " + ownedPercent + "\n" + "Rented: " + rentPercent));
     }
