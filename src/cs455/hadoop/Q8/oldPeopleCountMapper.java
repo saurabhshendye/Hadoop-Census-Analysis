@@ -17,18 +17,18 @@ public class oldPeopleCountMapper extends Mapper<LongWritable, Text, Text, Text>
         throws IOException, InterruptedException
     {
         String line = value.toString();
-        int partNo = Integer.parseInt(line.substring(24, 27));
+        int partNo = Integer.parseInt(line.substring(24, 28));
         if (partNo == 1)
         {
-            int lineSummary = Integer.parseInt(line.substring(10, 12));
+            int lineSummary = Integer.parseInt(line.substring(10, 13));
             if(lineSummary == 100)
             {
                 // Reading the state (output key)
-                String state = line.substring(8, 9);
+                String state = line.substring(8, 10);
 
                 // Reading the counts (output value)
-                String persons = line.substring(300, 308);
-                String oldPeopleCount = line.substring(1065, 1073);
+                String persons = line.substring(300, 309);
+                String oldPeopleCount = line.substring(1065, 1074);
 
                 // Writing the output
                 context.write(new Text(state), new Text(persons + ":" + oldPeopleCount));
