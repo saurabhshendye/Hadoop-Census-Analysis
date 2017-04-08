@@ -16,17 +16,17 @@ public class marriageAnalysisMapper extends Mapper<LongWritable, Text, Text, Tex
         throws IOException, InterruptedException
     {
         String line = value.toString();
-        int partNo = Integer.parseInt(line.substring(24, 27));
+        int partNo = Integer.parseInt(line.substring(24, 28));
         if (partNo == 1)
         {
-            int lineSummary = Integer.parseInt(line.substring(10, 12));
+            int lineSummary = Integer.parseInt(line.substring(10, 13));
             if(lineSummary == 100)
             {
-                String state = line.substring(8, 9);
-                String Male = line.substring(363, 371);
-                String Female = line.substring(372, 380);
-                String unmarriedMale = line.substring(4422, 4430);
-                String unmarriedFemale = line.substring(4467, 4475);
+                String state = line.substring(8, 10);
+                String Male = line.substring(363, 372);
+                String Female = line.substring(372, 381);
+                String unmarriedMale = line.substring(4422, 4431);
+                String unmarriedFemale = line.substring(4467, 4476);
 
                 context.write(new Text(state), new Text(Male + ":" + Female + ":" +
                                     unmarriedMale + ":" + unmarriedFemale));
