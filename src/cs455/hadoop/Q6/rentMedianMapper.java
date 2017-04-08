@@ -18,13 +18,13 @@ public class rentMedianMapper extends Mapper<LongWritable, Text, Text, Text>
         throws IOException, InterruptedException
     {
         String line = value.toString();
-        int partNo = Integer.parseInt(line.substring(24, 27));
+        int partNo = Integer.parseInt(line.substring(24, 28));
         if (partNo == 2)
         {
-            int lineSummary = Integer.parseInt(line.substring(10, 12));
+            int lineSummary = Integer.parseInt(line.substring(10, 13));
             if(lineSummary == 100)
             {
-                String state = line.substring(8, 9);
+                String state = line.substring(8, 10);
 
                 String summaryString = toString(line);
 
@@ -58,23 +58,23 @@ public class rentMedianMapper extends Mapper<LongWritable, Text, Text, Text>
     {
         String bigString = "";
 
-        bigString = bigString + line.substring(3450, 3458) + ":";
-        bigString = bigString + line.substring(3459, 3467) + ":";
-        bigString = bigString + line.substring(3468, 3476) + ":";
-        bigString = bigString + line.substring(3477, 3485) + ":";
-        bigString = bigString + line.substring(3486, 3494) + ":";
-        bigString = bigString + line.substring(3495, 3503) + ":";
-        bigString = bigString + line.substring(3504, 3512) + ":";
-        bigString = bigString + line.substring(3513, 3521) + ":";
-        bigString = bigString + line.substring(3522, 3530) + ":";
-        bigString = bigString + line.substring(3531, 3539) + ":";
-        bigString = bigString + line.substring(3540, 3548) + ":";
-        bigString = bigString + line.substring(3549, 3557) + ":";
-        bigString = bigString + line.substring(3558, 3566) + ":";
-        bigString = bigString + line.substring(3567, 3575) + ":";
-        bigString = bigString + line.substring(3576, 3584) + ":";
-        bigString = bigString + line.substring(3585, 3593) + ":";
-        bigString = bigString + line.substring(3594, 3602);
+        bigString = bigString + line.substring(3450, 3459) + ":";
+        bigString = bigString + line.substring(3459, 3468) + ":";
+        bigString = bigString + line.substring(3468, 3477) + ":";
+        bigString = bigString + line.substring(3477, 3486) + ":";
+        bigString = bigString + line.substring(3486, 3495) + ":";
+        bigString = bigString + line.substring(3495, 3504) + ":";
+        bigString = bigString + line.substring(3504, 3513) + ":";
+        bigString = bigString + line.substring(3513, 3522) + ":";
+        bigString = bigString + line.substring(3522, 3531) + ":";
+        bigString = bigString + line.substring(3531, 3540) + ":";
+        bigString = bigString + line.substring(3540, 3549) + ":";
+        bigString = bigString + line.substring(3549, 3558) + ":";
+        bigString = bigString + line.substring(3558, 3567) + ":";
+        bigString = bigString + line.substring(3567, 3576) + ":";
+        bigString = bigString + line.substring(3576, 3585) + ":";
+        bigString = bigString + line.substring(3585, 3594) + ":";
+        bigString = bigString + line.substring(3594, 3603);
 
         return bigString;
     }
