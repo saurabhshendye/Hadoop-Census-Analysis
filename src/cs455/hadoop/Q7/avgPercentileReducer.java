@@ -60,9 +60,9 @@ public class avgPercentileReducer extends Reducer <Text, Text, Text, Text>
         long total = summarySum();
         long count = findRoomCount();
 
-        double averageRooms = count/total;
+        double averageRooms = count * 1.0d /total;
 
-        double percentile = 0.95 * averageRooms;
+        double percentile = 0.95d * averageRooms;
 
         context.write(new Text("Percentile"), new Text(Double.toString(percentile)));
     }
