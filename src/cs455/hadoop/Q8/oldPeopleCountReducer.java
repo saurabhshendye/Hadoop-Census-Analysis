@@ -39,7 +39,7 @@ public class oldPeopleCountReducer extends Reducer<Text, Text, Text, Text>
     private static double findPercent()
     {
 //        float percent = summary[1]/(summary[0] + summary[1]);
-        return summary[1]/(summary[0]);
+        return summary[1] * 100.0d/(summary[0]);
     }
 
     private static void addToArray(String [] parts)
