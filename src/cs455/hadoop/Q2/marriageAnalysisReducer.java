@@ -45,8 +45,8 @@ public class marriageAnalysisReducer extends Reducer<Text, Text, Text, Text>
 
     private static String findStats()
     {
-        double malePercent = summary[2] * 1.0d/summary[0];
-        double femalePercent = summary[3] * 1.0d/summary[1];
+        double malePercent = summary[2] * 100.0d/summary[0];
+        double femalePercent = summary[3] * 100.0d/summary[1];
 
         String results = "Un-Married Male : " +  Double.toString(malePercent) + "\n"
                         + "Un-Married Female: " + Double.toString(femalePercent);
