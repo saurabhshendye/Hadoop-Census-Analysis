@@ -45,13 +45,13 @@ public class ageDistributionReducer extends Reducer<Text, Text, Text, Text>
     {
         String [] results = new String[6];
 
-        double under18MaleD = summary[0]/summary[6];
-        double from19to29MaleD = summary[1]/summary[6];
-        double from30to39MaleD = summary[2]/summary[6];
+        double under18MaleD = summary[0] * 100.0d/summary[6];
+        double from19to29MaleD = summary[1] * 100.0d /summary[6];
+        double from30to39MaleD = summary[2] * 100.0d/summary[6];
 
-        double under18FemaleD = summary[3]/summary[7];
-        double from19to29FemaleD = summary[4]/summary[7];
-        double from30to39FemaleD = summary[5]/summary[7];
+        double under18FemaleD = summary[3] * 100.0d /summary[7];
+        double from19to29FemaleD = summary[4] * 100.0d /summary[7];
+        double from30to39FemaleD = summary[5] * 100.0d /summary[7];
 
         results[0] = Double.toString(under18MaleD);
         results[1] = Double.toString(from19to29MaleD);
