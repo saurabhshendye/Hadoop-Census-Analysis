@@ -24,11 +24,11 @@ public class ageDistributionReducer extends Reducer<Text, Text, Text, Text>
 
         String [] results = getResults();
 
-        context.write(key, new Text("Under 18 Male: " + results[0]
-                                    + "Males From 19 to 29: " + results[1]
-                                    + "Males From 30 to 39: " + results[2]
-                                    + "Under 18 Females: " + results[3]
-                                    + "Females 19 to 29: " + results[4]
+        context.write(key, new Text("Under 18 Male: " + results[0] + " "
+                                    + "Males From 19 to 29: " + results[1] + " "
+                                    + "Males From 30 to 39: " + results[2] + " "
+                                    + "Under 18 Females: " + results[3] + " "
+                                    + "Females 19 to 29: " + results[4] + " "
                                     + "Females 30 to 39: " + results[5]));
 
     }
