@@ -66,8 +66,6 @@ public class rentedVsOwnedJob
             System.err.println(e.getMessage());
         }
 
-
-
     }
 
 }

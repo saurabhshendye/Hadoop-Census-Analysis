@@ -3,7 +3,10 @@
  */
 package cs455.hadoop.set1;
 
-public class set1Reduce
+import org.apache.hadoop.mapreduce.Reducer;
+import org.apache.hadoop.io.Text;
+
+public class set1Reduce extends Reducer<Text, Text, Text, Text>
 {
 
 }
