@@ -38,7 +38,7 @@ public class q9Map extends Mapper<LongWritable, Text, Text, Text>
                 String ageSummary = toString(line);
 
                 context.write(new Text(state), new Text(male + ":" + female +
-                                                        "/" + persons + ":" + hispanicMale
+                                                        "/" + persons + "/" + hispanicMale
                                                         + ":" + hispanicFemale +  "/" + ageSummary));
 
             }
