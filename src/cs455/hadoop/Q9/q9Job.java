@@ -24,7 +24,7 @@ public class q9Job
             Configuration conf = new Configuration();
 
             // Set the configuration and give job a name
-            Job job = Job.getInstance(conf, "Rented vs Owned");
+            Job job = Job.getInstance(conf, "Question 9");
 
             // Current Job
             job.setJarByClass(q9Job.class);
