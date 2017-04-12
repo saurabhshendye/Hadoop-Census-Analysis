@@ -115,7 +115,7 @@ public class set1Reduce extends Reducer<Text, Text, Text, Text>
 
         String q6range = q6valueMap.get(q6index);
 
-        context.write(key, new Text("Question-1: " + "Owned: " + ownedPercent + "Rented: " + rentPercent +"\n"
+        context.write(key, new Text("Question-1: " + "Owned: " + ownedPercent + " Rented: " + rentPercent +"\n"
                                     + "Question-2: " + q2Results + "\n"
                                     + "Question-3: " + q3WriteString + "\n"
                                     + "Question-4: " + "Urban: " + Double.toString(urbanPercent) + " Rural: "
