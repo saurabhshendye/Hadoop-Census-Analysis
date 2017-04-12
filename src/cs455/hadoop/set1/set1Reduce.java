@@ -15,6 +15,10 @@ public class set1Reduce extends Reducer<Text, Text, Text, Text>
     private static long [] q3summary = new long[8];
     private static long [] q5summary = new long[20];
     private static HashMap<String, String> q5valueMap = new HashMap<String, String>();
+    private static long [] q6summary = new long[17];
+    private static HashMap<String, String> q6valueMap = new HashMap<String, String>();
+
+
 
 
     public void reduce(Text key, Iterable<Text> values, Context context)
@@ -24,7 +28,7 @@ public class set1Reduce extends Reducer<Text, Text, Text, Text>
         long owned = 0;
         long rented = 0;
 
-        // for Question 2 , Question 3 and Question 5
+        // for Question 2, 3, 5 and 6
         zeroInitialization();
 
         // for Question 4
@@ -33,6 +37,9 @@ public class set1Reduce extends Reducer<Text, Text, Text, Text>
 
         // for Question 5
         q5setupHashMap();
+
+        // for Question 6
+        q6setupHashMap();
 
         for (Text value: values)
         {
@@ -57,6 +64,10 @@ public class set1Reduce extends Reducer<Text, Text, Text, Text>
                 String [] Q5 = byParts[3].split(":");
                 q5addAllValues(Q5);
 
+                // Question 6
+                String [] Q6 = byParts[4].split(":");
+                q6addAllValues(Q6);
+
             }
             else if (byParts[0].equals("part-2"))
             {
@@ -80,12 +91,20 @@ public class set1Reduce extends Reducer<Text, Text, Text, Text>
         String [] q3Results = q3getResults();
 
         // Question 5
-        long total = q5totalForCurrentKey();
-        long median = q5findMedian(total);
+        long q5total = q5totalForCurrentKey();
+        long q5median = q5findMedian(q5total);
 
-        String index = q5findRange(median);
+        String q5index = q5findRange(q5median);
 
-        String range = q5valueMap.get(index);
+        String q5range = q5valueMap.get(q5index);
+
+        // Question 6
+        long q6total = q6totalForCurrentKey();
+        long q6median = q6findMedian(q6total);
+        String q6index = q6findRange(q6median);
+
+        String q6range = q6valueMap.get(q6index);
+
 
     }
 
@@ -124,6 +143,11 @@ public class set1Reduce extends Reducer<Text, Text, Text, Text>
         for (int i = 0; i < q5summary.length; i++)
         {
             q5summary[i] = 0;
+        }
+
+        for (int i = 0; i < q6summary.length; i++)
+        {
+            q6summary[i] = 0;
         }
     }
 //-----------Q2 Methods end-----------//
@@ -238,5 +262,79 @@ public class set1Reduce extends Reducer<Text, Text, Text, Text>
         q5valueMap.put("19", "$500,000 or more");
     }
 //-----------Q5 Methods end-----------//
+
+//-----------Q6 Methods-----------//
+    private static void q6setupHashMap()
+    {
+        q6valueMap.put("0", "Less than $100");
+        q6valueMap.put("1", "$100 to $149");
+        q6valueMap.put("2", "$150 to $199");
+        q6valueMap.put("3", "$200 to $249");
+        q6valueMap.put("4", "$250 to $299");
+        q6valueMap.put("5", "$300 to $349");
+        q6valueMap.put("6", "$350 to $399");
+        q6valueMap.put("7", "$400 to $449");
+        q6valueMap.put("8", "$450 to $499");
+        q6valueMap.put("9", "$500 to $549");
+        q6valueMap.put("10", "$550 to $ 599");
+        q6valueMap.put("11", "$600 to $649");
+        q6valueMap.put("12", "$650 to $699");
+        q6valueMap.put("13", "$700 to $749");
+        q6valueMap.put("14", "$750 to $999");
+        q6valueMap.put("15", "$1000 or more");
+        q6valueMap.put("16", "No cash rent");
+    }
+
+    private static String q6findRange(long median)
+    {
+        long sum = 0;
+        for (int i = 0; i<q6summary.length; i++)
+        {
+            if (sum< median)
+            {
+                sum = sum + q6summary[i];
+            }
+            else
+            {
+                return Integer.toString(i);
+            }
+
+        }
+        return Integer.toString(q6summary.length -1);
+    }
+
+    private static long q6findMedian(long total)
+    {
+        long median;
+        if (total % 2 == 0)
+        {
+            median = total /2;
+        }
+        else
+        {
+            median = 1 + (total/2);
+        }
+        return median;
+    }
+
+    private static long q6totalForCurrentKey()
+    {
+        long total = 0;
+        for (long aSummary : q6summary) {
+            total = total + aSummary;
+        }
+
+        return total;
+    }
+
+    private static void q6addAllValues(String [] parts)
+    {
+        for (int i = 0; i < parts.length; i++)
+        {
+            long temp = Long.parseLong(parts[i]);
+            q6summary[i] = q6summary[i] + temp;
+        }
+    }
+
 
 }
