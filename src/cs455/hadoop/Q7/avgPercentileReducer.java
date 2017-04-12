@@ -12,6 +12,7 @@ import java.io.IOException;
 public class avgPercentileReducer extends Reducer <Text, Text, Text, Text>
 {
     private static long [] summary = new long[9];
+
     public void reduce(Text key, Iterable<Text> values, Context context)
         throws IOException, InterruptedException
     {

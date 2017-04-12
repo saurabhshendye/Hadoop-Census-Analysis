@@ -8,19 +8,24 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 
 public class set2Reduce extends Reducer<Text, Text, Text, Text>
 {
     private static long [] q8summary = new long[2];
     private static double q8percent = 0.0d;
+//    private static double q8percent;
     private static String q8state;
 
     private static long [] q7summary = new long[9];
+    private static ArrayList<String> q7array = new ArrayList<String>();
 
     public void reduce(Text key, Iterable<Text> values, Context context)
         throws IOException, InterruptedException
     {
+        zeroInitialization();
         for (Text value: values)
         {
             String [] byParts = value.toString().split("/");
@@ -42,10 +47,28 @@ public class set2Reduce extends Reducer<Text, Text, Text, Text>
             q8state = key.toString();
         }
 
+        long total = q7summarySum();
+        long count = q7findRoomCount();
+
+        double averageRooms = count * 1.0d /total;
+        q7array.add(Double.toString(averageRooms));
 
     }
 
 //--------------Q8 Methods--------------//
+    private static void zeroInitialization()
+    {
+        for (int i = 0; i < q8summary.length; i++)
+        {
+            q8summary[i] = 0;
+        }
+
+        for (int i = 0; i < q7summary.length; i++)
+        {
+            q7summary[i] = 0;
+        }
+    }
+
     private static void q8addToArray(String [] parts)
     {
         for (int i = 0; i < q8summary.length; i++)
@@ -98,12 +121,22 @@ public class set2Reduce extends Reducer<Text, Text, Text, Text>
 
     public void cleanup(Context context) throws IOException, InterruptedException
     {
-        long total = q7summarySum();
-        long count = q7findRoomCount();
+//        long total = q7summarySum();
+//        long count = q7findRoomCount();
+//
+//        double averageRooms = count * 1.0d /total;
+//
+//        double percentile = 0.95d * averageRooms;
 
-        double averageRooms = count * 1.0d /total;
+        double [] states = new double[q7array.size()];
 
-        double percentile = 0.95d * averageRooms;
+        for (int i = 0; i < states.length; i++)
+        {
+            states[i] = Double.parseDouble(q7array.get(i));
+        }
+
+        Arrays.sort(states);
+        double percentile = states[46];
 
         context.write(new Text("Question 7 and 8"), new Text("Question-7: " +
                                                         Double.toString(percentile) + "\n"
