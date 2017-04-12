@@ -12,6 +12,7 @@ import java.io.IOException;
 
 public class set1Map extends Mapper<LongWritable, Text, Text,Text>
 {
+    private static String Q1, Q2, Q3, Q4, Q5, Q6;
 
     public void map(LongWritable key, Text value, Context context)
             throws IOException, InterruptedException
@@ -30,7 +31,7 @@ public class set1Map extends Mapper<LongWritable, Text, Text,Text>
                 String owned = line.substring(1803, 1812);
                 String rented = line.substring(1812, 1821);
 
-                String Q1 = owned + ":" + rented;
+                Q1 = owned + ":" + rented;
 
                 //                context.write(new Text(state), new Text(owned + ":" + rented));
 
@@ -42,19 +43,22 @@ public class set1Map extends Mapper<LongWritable, Text, Text,Text>
 
                 String rural = line.substring(1839, 1848);
 
-                String Q4 = urban + ":" +rural;
+                Q4 = urban + ":" +rural;
 
 //                context.write(new Text(state), new Text(urban + ":" +rural));
 
                 // Mapper for question 5
-                String  Q5 = toString(line);
+                Q5 = toString(line);
 
 //                context.write(new Text(state), new Text(summaryString));
 
                 // Mapper for question 6
-                String Q6 = toString6(line);
+                Q6 = toString6(line);
 
 //                context.write(new Text(state), new Text(summaryString));
+
+                context.write(new Text(state), new Text("part-2" + "/" + Q1 + "/" + Q4 + "/"
+                                + Q5 + "/" + Q6));
 
             }
         }
@@ -71,7 +75,7 @@ public class set1Map extends Mapper<LongWritable, Text, Text,Text>
                 String unmarriedMale = line.substring(4422, 4431);
                 String unmarriedFemale = line.substring(4467, 4476);
 
-                String Q2 = Male + ":" + Female + ":" + unmarriedMale + ":" + unmarriedFemale;
+                Q2 = Male + ":" + Female + ":" + unmarriedMale + ":" + unmarriedFemale;
 
 //            context.write(new Text(state), new Text(Male + ":" + Female + ":" +
 //                    unmarriedMale + ":" + unmarriedFemale));
@@ -88,7 +92,7 @@ public class set1Map extends Mapper<LongWritable, Text, Text,Text>
                 String maleCount = line.substring(363, 372);
                 String femaleCount = line.substring(372, 381);
 
-                String Q3 = age18Male + ":" + age19To29Male + ":" +
+                Q3 = age18Male + ":" + age19To29Male + ":" +
                         age30To39Male + ":" + age18FeMale + ":" + age19To29FeMale
                         + ":" + age30To39FeMale + ":" + maleCount
                         + ":" + femaleCount;
@@ -98,10 +102,11 @@ public class set1Map extends Mapper<LongWritable, Text, Text,Text>
 //                        + "/" + age30To39FeMale + "/" + maleCount
 //                        + "/" + femaleCount));
 
+                context.write(new Text(state), new Text("part-1" + "/" + Q2 + "/" + Q3));
+
             }
 
         }
-
 
     }
 
