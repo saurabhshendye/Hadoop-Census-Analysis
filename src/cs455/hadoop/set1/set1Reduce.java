@@ -89,6 +89,16 @@ public class set1Reduce extends Reducer<Text, Text, Text, Text>
 
         // Question 3
         String [] q3Results = q3getResults();
+        String q3WriteString = "Under 18 Male: " + q3Results[0] + " "
+                                + "Males From 19 to 29: " + q3Results[1] + " "
+                                + "Males From 30 to 39: " + q3Results[2] + " "
+                                + "Under 18 Females: " + q3Results[3] + " "
+                                + "Females 19 to 29: " + q3Results[4] + " "
+                                + "Females 30 to 39: " + q3Results[5];
+
+        // Question 4
+        double urbanPercent = urban * 100.0d/ (urban + rural);
+        double ruralPercent = rural * 100.0d/ (urban + rural);
 
         // Question 5
         long q5total = q5totalForCurrentKey();
@@ -105,6 +115,13 @@ public class set1Reduce extends Reducer<Text, Text, Text, Text>
 
         String q6range = q6valueMap.get(q6index);
 
+        context.write(key, new Text("Question-1: " + "Owned: " + ownedPercent + "Rented: " + rentPercent +"\n"
+                                    + "Question-2: " + q2Results + "\n"
+                                    + "Question-3: " + q3WriteString + "\n"
+                                    + "Question-4: " + "Urban: " + Double.toString(urbanPercent) + "Rural: "
+                                    + Double.toString(ruralPercent) + "\n"
+                                    + "Question-5: " + q5range + "\n"
+                                    + "Question-6: " + q6range + "\n"));
 
     }
 
