@@ -16,6 +16,8 @@ public class set2Reduce extends Reducer<Text, Text, Text, Text>
     private static double q8percent = 0.0d;
     private static String q8state;
 
+    private static long [] q7summary = new long[9];
+
     public void reduce(Text key, Iterable<Text> values, Context context)
         throws IOException, InterruptedException
     {
@@ -27,6 +29,11 @@ public class set2Reduce extends Reducer<Text, Text, Text, Text>
                 String [] parts = byParts[1].split(":");
                 q8addToArray(parts);
             }
+            else if (byParts[0].equals("part-2"))
+            {
+                String [] parts = value.toString().split(":");
+                q7addToArray(parts);
+            }
         }
 
         if (q8percent < q8findPercent())
@@ -34,6 +41,8 @@ public class set2Reduce extends Reducer<Text, Text, Text, Text>
             q8percent = q8findPercent();
             q8state = key.toString();
         }
+
+
     }
 
 //--------------Q8 Methods--------------//
@@ -49,5 +58,55 @@ public class set2Reduce extends Reducer<Text, Text, Text, Text>
     {
 //        float percent = summary[1]/(summary[0] + summary[1]);
         return q8summary[1] * 100.0d/(q8summary[0]);
+    }
+
+//--------------Q8 Methods end --------------//
+
+//--------------Q7 Methods--------------//
+    private void q7addToArray(String [] parts)
+    {
+        for (int i = 0; i < q7summary.length; i++)
+        {
+            q7summary[i] = q7summary[i] + Long.parseLong(parts[i]);
+        }
+    }
+
+    private static long q7summarySum()
+    {
+        long sum = 0;
+        for (long value: q7summary)
+        {
+            sum = sum + value;
+        }
+
+        return sum;
+    }
+
+    private static long q7findRoomCount()
+    {
+//        long [] count = new long[9];
+        long count = 0;
+        for (int i = 0; i < q7summary.length; i++)
+        {
+//            count[i] = summary[i] * (i+1);
+            count = count + (q7summary[i] * (i+1));
+        }
+
+        return count;
+    }
+
+
+    public void cleanup(Context context) throws IOException, InterruptedException
+    {
+        long total = q7summarySum();
+        long count = q7findRoomCount();
+
+        double averageRooms = count * 1.0d /total;
+
+        double percentile = 0.95d * averageRooms;
+
+        context.write(new Text("Question 7 and 8"), new Text("Question-7: " +
+                                                        Double.toString(percentile) + "\n"
+                                                        + "Question-8: " + q8state + " : " + q8percent ));
     }
 }
