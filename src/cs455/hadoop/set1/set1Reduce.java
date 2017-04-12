@@ -71,6 +71,7 @@ public class set1Reduce extends Reducer<Text, Text, Text, Text>
             }
             else if (byParts[0].equals("part-2"))
             {
+                System.out.println(byParts[1]);
                 String [] Q2 = byParts[1].split(":");
                 q2AddToArray(Q2);
 
@@ -139,7 +140,7 @@ public class set1Reduce extends Reducer<Text, Text, Text, Text>
 
     private static void q2AddToArray(String [] parts)
     {
-        for (int i = 0; i < q2Summary.length; i++)
+        for (int i = 0; i < parts.length; i++)
         {
             q2Summary[i] = q2Summary[i] + Long.parseLong(parts[i]);
         }
@@ -172,7 +173,7 @@ public class set1Reduce extends Reducer<Text, Text, Text, Text>
 //-----------Q3 Methods-----------//
     private static void q3addToArray(String [] parts)
     {
-        for (int i = 0; i < q3summary.length; i++)
+        for (int i = 0; i < parts.length; i++)
         {
             q3summary[i] = q3summary[i] + Long.parseLong(parts[i]);
         }
