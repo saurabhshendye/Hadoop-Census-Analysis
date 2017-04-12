@@ -299,7 +299,7 @@ public class set1Reduce extends Reducer<Text, Text, Text, Text>
         q6valueMap.put("13", "$700 to $749");
         q6valueMap.put("14", "$750 to $999");
         q6valueMap.put("15", "$1000 or more");
-        q6valueMap.put("16", "No cash rent");
+//        q6valueMap.put("16", "No cash rent");
     }
 
     private static String q6findRange(long median)
