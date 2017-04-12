@@ -8,7 +8,7 @@ import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
-public class set2Mapper extends Mapper<LongWritable, Text, Text, Text>
+public class set2Map extends Mapper<LongWritable, Text, Text, Text>
 {
 
 
