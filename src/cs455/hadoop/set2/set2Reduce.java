@@ -138,8 +138,8 @@ public class set2Reduce extends Reducer<Text, Text, Text, Text>
         Arrays.sort(states);
         double percentile = states[48];
 
-        context.write(new Text("Question 7 and 8"), new Text("Question-7: " +
+        context.write(new Text("Question 7 and 8"), new Text("\n" + "95th Percentile " +
                                                         Double.toString(percentile) + "\n"
-                                                        + "Question-8: " + q8state + " : " + q8percent ));
+                                                        + "People with age > 85 " + q8state + " : " + q8percent ));
     }
 }
