@@ -136,7 +136,7 @@ public class set2Reduce extends Reducer<Text, Text, Text, Text>
         }
 
         Arrays.sort(states);
-        double percentile = states[46];
+        double percentile = states[48];
 
         context.write(new Text("Question 7 and 8"), new Text("Question-7: " +
                                                         Double.toString(percentile) + "\n"
