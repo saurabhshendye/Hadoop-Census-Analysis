@@ -23,6 +23,10 @@ public class set1Reduce extends Reducer<Text, Text, Text, Text>
         // for Question 2 and Question 3
         zeroInitialization();
 
+        // for Question 4
+        long urban = 0;
+        long rural = 0;
+
         for (Text value: values)
         {
             String strValue = value.toString();
@@ -30,10 +34,18 @@ public class set1Reduce extends Reducer<Text, Text, Text, Text>
 
             if (byParts[0].equals("part-1"))
             {
+                // Question 1
                 String [] Q1 = byParts[1].split(":");
 
                 owned = owned + Long.parseLong(Q1[0]);
                 rented = rented + Long.parseLong(Q1[1]);
+
+                // Question 4
+                String [] Q4 = byParts[2].split(":");
+
+                urban = urban + Long.parseLong(Q4[0]);
+                rural = rural + Long.parseLong(Q4[1]);
+
 
 
             }
