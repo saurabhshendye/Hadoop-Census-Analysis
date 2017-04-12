@@ -15,7 +15,7 @@ public class set1Reduce extends Reducer<Text, Text, Text, Text>
     private static long [] q3summary = new long[8];
     private static long [] q5summary = new long[20];
     private static HashMap<String, String> q5valueMap = new HashMap<String, String>();
-    private static long [] q6summary = new long[17];
+    private static long [] q6summary = new long[16];
     private static HashMap<String, String> q6valueMap = new HashMap<String, String>();
 
     public void reduce(Text key, Iterable<Text> values, Context context)

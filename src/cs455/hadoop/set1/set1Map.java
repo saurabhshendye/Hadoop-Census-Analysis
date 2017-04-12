@@ -248,8 +248,8 @@ public class set1Map extends Mapper<LongWritable, Text, Text,Text>
         bigString = bigString + line.substring(3558, 3567) + ":";
         bigString = bigString + line.substring(3567, 3576) + ":";
         bigString = bigString + line.substring(3576, 3585) + ":";
-        bigString = bigString + line.substring(3585, 3594) + ":";
-        bigString = bigString + line.substring(3594, 3603);
+        bigString = bigString + line.substring(3585, 3594);
+//        bigString = bigString + line.substring(3594, 3603);
 
         return bigString;
     }
