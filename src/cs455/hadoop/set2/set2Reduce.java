@@ -1,12 +1,21 @@
+/*
+ * Created by Saurabh on 4/12/2017.
+ */
+
 package cs455.hadoop.set2;
 
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
-/**
- * Created by Saurabh on 4/12/2017.
- */
+import java.io.IOException;
+
+
 public class set2Reduce extends Reducer<Text, Text, Text, Text>
 {
+    public void reduce(Text key, Iterable<Text> values, Context context)
+        throws IOException, InterruptedException
+    {
+
+    }
 
 }
