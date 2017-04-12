@@ -16,7 +16,13 @@ public class set1Reduce extends Reducer<Text, Text, Text, Text>
     public void reduce(Text key, Iterable<Text> values, Context context)
         throws IOException, InterruptedException
     {
+        // for Q1
+        long owned = 0;
+        long rented = 0;
+
+        // for Question 2 and Question 3
         zeroInitialization();
+
         for (Text value: values)
         {
             String strValue = value.toString();
@@ -24,6 +30,11 @@ public class set1Reduce extends Reducer<Text, Text, Text, Text>
 
             if (byParts[0].equals("part-1"))
             {
+                String [] Q1 = byParts[1].split(":");
+
+                owned = owned + Long.parseLong(Q1[0]);
+                rented = rented + Long.parseLong(Q1[1]);
+
 
             }
             else if (byParts[0].equals("part-2"))
@@ -37,7 +48,14 @@ public class set1Reduce extends Reducer<Text, Text, Text, Text>
             }
         }
 
+        // Question 1
+        double rentPercent = rented * 100d/(owned + rented);
+        double ownedPercent = owned * 100d/(owned + rented);
+
+        // Question 2
         String q2Results = q2findStats();
+
+        // Question 3
         String [] q3Results = q3getResults();
 
     }
@@ -67,6 +85,11 @@ public class set1Reduce extends Reducer<Text, Text, Text, Text>
         for (int i = 0; i < q2Summary.length; i++)
         {
             q2Summary[i] = 0;
+        }
+
+        for (int i = 0; i < q3summary.length; i++)
+        {
+            q3summary[i] = 0;
         }
     }
 //-----------Q2 Methods end-----------//
