@@ -31,7 +31,7 @@ public class set2Reduce extends Reducer<Text, Text, Text, Text>
             }
             else if (byParts[0].equals("part-2"))
             {
-                String [] parts = value.toString().split(":");
+                String [] parts = byParts[1].split(":");
                 q7addToArray(parts);
             }
         }
