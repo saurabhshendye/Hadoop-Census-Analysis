@@ -87,8 +87,6 @@ public class set1Reduce extends Reducer<Text, Text, Text, Text>
 
         String range = q5valueMap.get(index);
 
-
-
     }
 
 //-----------Q2 Methods-----------//
@@ -239,5 +237,6 @@ public class set1Reduce extends Reducer<Text, Text, Text, Text>
         q5valueMap.put("18", "$400,000 - $499,999");
         q5valueMap.put("19", "$500,000 or more");
     }
+//-----------Q5 Methods end-----------//
 
 }
