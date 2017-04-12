@@ -43,7 +43,9 @@ public class set1Map extends Mapper<LongWritable, Text, Text,Text>
 
                 String rural = line.substring(1839, 1848);
 
-                Q4 = urban + ":" +rural;
+                String unDefined = line.substring(1848, 1857);
+
+                Q4 = urban + ":" +rural + ":" + unDefined;
 
 //                context.write(new Text(state), new Text(urban + ":" +rural));
 

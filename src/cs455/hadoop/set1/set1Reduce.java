@@ -31,6 +31,7 @@ public class set1Reduce extends Reducer<Text, Text, Text, Text>
         // for Question 4
         long urban = 0;
         long rural = 0;
+        long unDefined = 0;
 
         // for Question 5
         q5setupHashMap();
@@ -56,6 +57,7 @@ public class set1Reduce extends Reducer<Text, Text, Text, Text>
 
                 urban = urban + Long.parseLong(Q4[0]);
                 rural = rural + Long.parseLong(Q4[1]);
+                unDefined = unDefined + Long.parseLong(Q4[2]);
 
                 // Question 5
                 String [] Q5 = byParts[3].split(":");
@@ -95,8 +97,8 @@ public class set1Reduce extends Reducer<Text, Text, Text, Text>
                                 + "Females 30 to 39: " + q3Results[5];
 
         // Question 4
-        double urbanPercent = urban * 100.0d/ (urban + rural);
-        double ruralPercent = rural * 100.0d/ (urban + rural);
+        double urbanPercent = urban * 100.0d/ (urban + rural + unDefined);
+        double ruralPercent = rural * 100.0d/ (urban + rural + unDefined);
 
         // Question 5
         long q5total = q5totalForCurrentKey();
