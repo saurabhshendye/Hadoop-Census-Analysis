@@ -18,9 +18,6 @@ public class set1Reduce extends Reducer<Text, Text, Text, Text>
     private static long [] q6summary = new long[17];
     private static HashMap<String, String> q6valueMap = new HashMap<String, String>();
 
-
-
-
     public void reduce(Text key, Iterable<Text> values, Context context)
         throws IOException, InterruptedException
     {
@@ -46,7 +43,7 @@ public class set1Reduce extends Reducer<Text, Text, Text, Text>
             String strValue = value.toString();
             String [] byParts = strValue.split("/");
 
-            if (byParts[0].equals("part-1"))
+            if (byParts[0].equals("part-2"))
             {
                 // Question 1
                 String [] Q1 = byParts[1].split(":");
@@ -69,7 +66,7 @@ public class set1Reduce extends Reducer<Text, Text, Text, Text>
                 q6addAllValues(Q6);
 
             }
-            else if (byParts[0].equals("part-2"))
+            else if (byParts[0].equals("part-1"))
             {
                 System.out.println(byParts[1]);
                 String [] Q2 = byParts[1].split(":");

@@ -53,7 +53,7 @@ public class part1Map extends Mapper<LongWritable, Text, Text, Text> {
 //                        + "/" + age30To39FeMale + "/" + maleCount
 //                        + "/" + femaleCount));
 
-                context.write(new Text(state), new Text("part-1" + "/" + Q2 + "/" + Q3));
+                context.write(new Text(state), new Text(Q2 + "/" + Q3));
             }
         }
     }
